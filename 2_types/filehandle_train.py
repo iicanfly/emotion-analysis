@@ -1,7 +1,5 @@
-
 # coding: utf-8
 
-# In[1]:
 
 
 
@@ -20,7 +18,6 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-# In[2]:
 
 
 # 初步处理原始数据
@@ -59,7 +56,6 @@ def deal_data(data):
     return data
 
 
-# In[3]:
 
 
 # 生成初步处理文件
@@ -85,7 +81,6 @@ def handleOrgData(ifileName, ofileName):
     return
 
 
-# In[4]:
 
 
 # 读取处理好的文件
@@ -99,7 +94,6 @@ def readTreatedData(ifileName):
     return data
 
 
-# In[5]:
 
 
 # 读入标签
@@ -115,7 +109,6 @@ def readLabel(ifileName):
     return label
 
 
-# In[6]:
 
 
 # 分割训练集，测试集
@@ -128,7 +121,6 @@ def splitDataSet(orgData, label, splitRate, train=True):
     return orgCombineData[:splitIndex], orgCombineData[splitIndex + 1:]
 
 
-# In[7]:
 
 
 # 建立词库
@@ -144,7 +136,6 @@ def buildWordLib(fileName):
     return wordSet
 
 
-# In[8]:
 
 
 # 测试字典序
@@ -156,7 +147,6 @@ def testOutput(filename, dict):
     ofstream.close()
 
 
-# In[9]:
 
 
 # 建立测试集的one-hot矩阵
@@ -176,7 +166,6 @@ def buildOneHotTest(orgCombineData, wordLib):
     return testData
 
 
-# In[10]:
 
 
 #建立预测集的one-hot矩阵
@@ -191,7 +180,6 @@ def predictData(preData, wordLib):
     return oneHot
 
 
-# In[11]:
 
 
 # 建立one-hot矩阵的同时训练数据
@@ -233,39 +221,11 @@ def trainStep(train, test, preData, wordLib, net):
     return
 
 
-# In[12]:
-
-
-# def mainFunc():
-#     # 读入训练集
-#     orgData = readTreatedData("./2/train_data.txt")
-#     print("1")
-#     # 读入预测集
-#     preData = readTreatedData("./2/test_data.txt")
-#     print("2")
-#     # 读入标签集
-#     label = readLabel("./2/trainLabel.txt")
-#     print("3")
-#     #划分训练集，测试集
-#     trainData, testData = splitDataSet(orgData, label, 47)
-#     wordLib = buildWordLib("./2/train_data_2_last.txt")
-#     print("4")
-#     # 构建预测集的one-hot
-#     preOneHot = predictData(preData, wordLib)
-#     oneHotTest = buildOneHotTest(testData, wordLib)
-#     wordSetLen, labelNum = len(wordLib), len(label[0])
-#     net = Network([wordSetLen, 64, 64, 64, labelNum])
-#     trainStep(trainData, oneHotTest, preOneHot, wordLib, net)
-#     return
-
-
-# In[13]:
 
 
 if __name__ == '__main__':
 # 	handleOrgData("./2/trainData.txt","./2/train_data.txt")
 # 	handleOrgData("./2/testData.txt","./2/test_data.txt")
-# 	mainFunc()
 
     # 读入训练集
     orgData = readTreatedData("./2/train_data.txt")
